@@ -1,0 +1,55 @@
+/* General Styling for Sections */
+.dashboard-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    font-family: Arial, sans-serif;
+}
+
+/* Section Headings */
+.dashboard-section h2 {
+    margin-bottom: 15px;
+    color: #333; /* Dark text */
+    font-size: 1.5rem;
+    border-bottom: 2px solid #3498db; /* Blue border */
+    padding-bottom: 5px;
+}
+
+/* Lists Styling */
+.dashboard-section ul {
+    list-style-type: none; /* Remove default bullets */
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.dashboard-section ul li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 30px; /* Space for icons */
+    font-size: 1rem;
+    color: #555; /* Slightly dark gray text */
+}
+
+/* Font Awesome Icon as Bullet */
+.dashboard-section ul li::before {
+    content: '\f058'; /* Circle check icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #3498db; /* Blue icon */
+    font-size: 1rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Total Clients */
+.dashboard-section p {
+    font-size: 1.2rem;
+    color: #2d572c; /* Green text */
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}

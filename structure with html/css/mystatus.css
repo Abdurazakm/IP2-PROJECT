@@ -1,0 +1,25 @@
+
+.wholereport{
+    margin:5%;
+    padding:1%;
+    background-color:rgb(230, 230, 230);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
+    
+}
+
+.value{
+    font-size: 20px;
+    font-weight: bold;
+}
+.data_card_sections{
+    margin:10px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0 0 5px rgb(167, 166, 166);
+    border-radius: 5px;
+}
+
+.section2{
+    margin-top: 20%;
+}

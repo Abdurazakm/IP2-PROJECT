@@ -1,0 +1,39 @@
+main{
+    background-color:rgb(230, 230, 230);
+    margin:5%;
+    padding: 2%;
+    box-shadow: 0 0 5px rgb(167, 166, 166);
+    border-radius: 5px;
+
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    align-items: center;
+
+}
+
+/* separate each form */
+.manual_data{            
+    margin: 2%;
+}   
+.divisions{
+    background-color: white;
+    margin: 5%;
+    padding: 4%;
+    display: flex;
+    box-shadow: 0 0 5px rgb(167, 166, 166);
+    border-radius: 10px;
+    
+}
+.dateandtime{
+    padding: 10px;
+    margin:auto auto 1rem;
+    width: 60%;
+}
+.messages{
+    background-color: white;
+    display: grid;
+    margin: 5%;
+    box-shadow: 0 0 5px rgb(167, 166, 166);
+    border-radius: 10px;
+
+}

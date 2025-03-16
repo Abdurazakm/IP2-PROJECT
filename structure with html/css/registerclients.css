@@ -1,0 +1,52 @@
+form{
+    background-color: white;
+    width: 60%;
+    padding: 5%;
+
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+}
+#formcollection{
+    width: 100%;
+}
+
+.submitbutton{
+    display: flex;
+    justify-content: center;
+}
+
+.registerform{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+
+}
+.inside-registerform{
+    border-radius: 5px;
+    width: 60%;
+    padding: 5%;
+    margin-bottom: 5%;
+    background-color:rgb(230, 230, 230);
+    box-shadow: 0 0 5px rgb(131, 129, 129);
+}
+#contact{
+    padding: 12px;
+    width:100%;
+    border-radius: 5px;
+    border-color: rgb(201, 199, 199);
+    border-width:1px;
+}
+
+
+@media (max-width: 768px) {
+    .registerform {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 1rem; /* Add spacing between stacked sections */
+    }
+
+    .inside-registerform {
+        width: 100%; 
+    }
+    
+}

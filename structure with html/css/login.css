@@ -1,0 +1,52 @@
+.x-icon{
+    text-align: right;
+    margin: 2%;
+    }
+.x-icon :hover{
+    color: red;
+
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+
+}
+.forget{
+    margin-top: 30px;
+    padding-left:21% ;
+}
+/* to correct the email box which have smaller attributes */
+#email{
+    padding: 12px;
+    margin-bottom: 1rem;
+    font-size:medium;
+    width:100%;
+    border-radius: 5px;
+    border-color: rgb(224, 221, 221);
+    border-width:1px;
+    
+}
+
+/* already have an account position */
+#already_have{
+    margin-top:3% ;
+    font-size: medium;
+    padding-left:10% ;
+}
+
+@media (max-width: 480px) {
+
+    #login-form {
+        width: 90%;
+        max-width: 350px;
+        padding: 10px;
+    }
+}
