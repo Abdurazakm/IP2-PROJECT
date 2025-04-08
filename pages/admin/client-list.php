@@ -58,7 +58,26 @@
                     </tr>
                 </thead>
                 <tbody>
-        
+                <?php include("C:\\xampp\htdocs\IP2-PROCJECT\assets\backend\\functions.php"); ?>
+                    <?php 
+                    if(empty($rows)){
+                        echo "<tr><td colspan='10'><p  style='text-align:center;'>Nothing to show here</p></td></tr>";
+                    }
+                    else{
+                        foreach ($rows as $row): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['age']); ?></td>
+                                <td><?php echo htmlspecialchars($row['passport_number']); ?></td>
+                                <td><?php echo htmlspecialchars($row['nationality']); ?></td>
+                                <td><?php echo htmlspecialchars($row['medical_status']); ?></td>
+                                <td><?php echo htmlspecialchars($row['job_type']); ?></td>
+                                <td><?php echo htmlspecialchars($row['marital_status']); ?></td>
+                                <td><?php echo htmlspecialchars($row['registration_date']); ?></td>
+                                <td><?php echo htmlspecialchars($row['flight_date']); ?></td>
+                                <td><?php echo htmlspecialchars($row['status']); ?></td>
+                            </tr>
+                        <?php endforeach;} ?>
                 </tbody>
             </table>
         </div>
