@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (username, pword) VALUES ('$username', '$hashed_password')";
     if(mysqli_query($connection, $sql)) {
         echo "Registration successful!";
-        header("Location: ../../pages/user/user_login.html"); // Redirect after signup
+        // header("Location: ../../pages/user/user_login.html"); // Redirect after signup
         exit();
     } else {
         echo "Error: " . mysqli_error($connection);
