@@ -6,9 +6,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = validateUser($_POST);
 
     if (empty($errors)) {
-        User::create($_POST['username'], $_POST['email'], $_POST['password']);
-        echo "User registered successfully.";
+        $success = User::create($_POST['username'], $_POST['email'], $_POST['password']);
+        if ($success) {
+            echo "User registered successfully.";
+        } else {
+            echo "Something went wrong.";
+        }
     } else {
-        foreach ($errors as $e) echo $e . "<br>";
+        foreach ($errors as $error) {
+            echo $error . "<br>";
+        }
     }
 }

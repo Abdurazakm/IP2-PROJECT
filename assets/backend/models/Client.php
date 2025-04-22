@@ -3,7 +3,7 @@ require_once __DIR__ . '/../config/database.php';
 
 class Client {
     public static function create($data) {
-        global $pdo;
+        $pdo = getPDO();
         $stmt = $pdo->prepare("INSERT INTO clients (
             full_name, age, passport_number, nationality, medical_status,
             job_type, marital_status, registration_date, flight_date, status
