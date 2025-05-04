@@ -8,6 +8,11 @@ class User {
         $checkStmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $checkStmt->execute([$email]);
 
+        if ($checkStmt->fetch()) {
+            // Email exists
+            return false;
+        }
+
         $checkpassp = $pdo->prepare("SELECT id FROM users WHERE passport_no = ?");
         $checkpassp->execute([$Passport_no]);
 
@@ -15,12 +20,20 @@ class User {
             // Account with this Passport Number already exists
             return false;
         }
+
+        $checkrgstr = $pdo->prepare("SELECT full_name FROM clients WHERE passport_number = ? ");
+        $checkrgstr->execute([$Passport_no]);
+        $row = $checkrgstr->fetch(PDO::FETCH_ASSOC);
+        
+        if($row){
+            if ($row['full_name'] != $FullName){
+                return false;
+            }
+        }
+
+
         
 
-        if ($checkStmt->fetch()) {
-            // Email exists
-            return false;
-        }
         $stmt = $pdo->prepare("INSERT INTO users (fullname,passport_no,username, email, password) VALUES (?, ?, ?, ?, ?)");
         return $stmt->execute([
             $FullName,
