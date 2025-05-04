@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = validateUser($_POST);
 
     if (empty($errors)) {
-        $success = User::create($_POST['username'], $_POST['email'], $_POST['password']);
+        $success = User::create($_POST['fullname'],$_POST['username'], $_POST['email'], $_POST['password']);
         if ($success) {
             echo "User registered successfully.";
         } else {
