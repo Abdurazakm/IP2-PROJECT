@@ -8,6 +8,15 @@ class User {
         $checkStmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $checkStmt->execute([$email]);
 
+        $checkpassp = $pdo->prepare("SELECT id FROM users WHERE passport_no = ?");
+        $checkpassp->execute([$Passport_no]);
+
+        if ($checkpassp->fetch()){
+            // Account with this Passport Number already exists
+            return false;
+        }
+        
+
         if ($checkStmt->fetch()) {
             // Email exists
             return false;
