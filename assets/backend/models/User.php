@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../config/database.php';
 
 class User {
-    public static function create($username, $email, $password) {
+    public static function create($FullName,$username, $email, $password) {
         $pdo = getPDO(); // Get the PDO instance
         // Check if email already exists
         $checkStmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
@@ -12,8 +12,9 @@ class User {
             // Email exists
             return false;
         }
-        $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO users (fullname,username, email, password) VALUES (?,?, ?, ?)");
         return $stmt->execute([
+            $FullName,
             $username,
             $email,
             password_hash($password, PASSWORD_DEFAULT)
