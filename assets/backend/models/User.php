@@ -24,11 +24,15 @@ class User {
         $checkrgstr = $pdo->prepare("SELECT full_name FROM clients WHERE passport_number = ? ");
         $checkrgstr->execute([$Passport_no]);
         $row = $checkrgstr->fetch(PDO::FETCH_ASSOC);
-        
+
         if($row){
             if ($row['full_name'] != $FullName){
                 return false;
             }
+        }
+        else {
+            // If not registerd by admin cannot sign up
+            return false;
         }
 
 
