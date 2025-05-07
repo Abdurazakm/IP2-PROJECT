@@ -30,48 +30,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  else if (pageId === "sign-up") {   // verification for sign-up page
-    const signupForm = document.getElementById("login-form");
+  // else if (pageId === "sign-up") {   // verification for sign-up page
+  //   const signupForm = document.getElementById("login-form");
 
-    signupForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+  //   signupForm.addEventListener("submit", (e) => {
+  //     e.preventDefault();
 
-      const username = document.getElementById("username").value;
-      validateUsername(username) //check if username is valid
-      const errors = validateUsername(username);
-      if (errors.length > 0) {
-        alert("Please follow this guidline for your username\n" + errors);
-        return;
-      }
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirm-password").value;
+  //     const username = document.getElementById("username").value;
+  //     validateUsername(username) //check if username is valid
+  //     const errors = validateUsername(username);
+  //     if (errors.length > 0) {
+  //       alert("Please follow this guidline for your username\n" + errors);
+  //       return;
+  //     }
+  //     const password = document.getElementById("password").value;
+  //     const confirmPassword = document.getElementById("confirm-password").value;
 
-      if (password !== confirmPassword) {    //check if password is simmilar to confirm password.
-        alert("Passwords do not match!");
-        return;
-      }
+  //     if (password !== confirmPassword) {    //check if password is simmilar to confirm password.
+  //       alert("Passwords do not match!");
+  //       return;
+  //     }
 
-      // Retrieve existing users from localStorage or initialize an empty array
-      const users = JSON.parse(localStorage.getItem("users")) || [];
+  //     // Retrieve existing users from localStorage or initialize an empty array
+  //     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      // Check if the username already exists
-      if (users.some(user => user.username === username)) {
-        alert("Username already exists. Please choose another one.");
-        return;
-      }
+  //     // Check if the username already exists
+  //     if (users.some(user => user.username === username)) {
+  //       alert("Username already exists. Please choose another one.");
+  //       return;
+  //     }
 
-      // Add the new user to the list
-      users.push({ username, password });
+  //     // Add the new user to the list
+  //     users.push({ username, password });
 
-      // Store the updated list back in localStorage
-      localStorage.setItem("users", JSON.stringify(users));
+  //     // Store the updated list back in localStorage
+  //     localStorage.setItem("users", JSON.stringify(users));
 
-      alert("Signup successful! You can now log in.");
-      signupForm.reset();
-      window.location.href = "reports.html"; // Redirect to admin dashboard
+  //     alert("Signup successful! You can now log in.");
+  //     signupForm.reset();
+  //     window.location.href = "reports.html"; // Redirect to admin dashboard
 
-    });
-  }
+  //   });
+  // }
 
   else if (pageId === "notification") {
     const timeElements = document.querySelectorAll(".timecalc");
@@ -118,61 +118,61 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  else if (pageId === "register") {
-    // Add event listener for form submission
-    document.getElementById("submit").addEventListener("click", registration);
+  // else if (pageId === "register") {
+  //   // Add event listener for form submission
+  //   document.getElementById("submit").addEventListener("click", registration);
 
-    function registration(event) {
-      event.preventDefault(); // Prevent form submission's default behavior (page refresh)
+  //   function registration(event) {
+  //     event.preventDefault(); // Prevent form submission's default behavior (page refresh)
 
-      // Get form field values
-      const firstName = document.getElementById('fname').value;
-      const middleName = document.getElementById('mname').value;
-      const lastName = document.getElementById('lname').value;
-      const phone = document.getElementById('contact').value;
-      const passport = document.getElementById('passport').value;
-      const nationality = document.getElementById('nationality').value;
-      const employeeType = document.getElementById('employee_type').value;
-      const maritalStatus = document.querySelector('input[name="mstatus"]:checked').value;
-      const age = document.getElementById('age').value;
+  //     // Get form field values
+  //     const firstName = document.getElementById('fname').value;
+  //     const middleName = document.getElementById('mname').value;
+  //     const lastName = document.getElementById('lname').value;
+  //     const phone = document.getElementById('contact').value;
+  //     const passport = document.getElementById('passport').value;
+  //     const nationality = document.getElementById('nationality').value;
+  //     const employeeType = document.getElementById('employee_type').value;
+  //     const maritalStatus = document.querySelector('input[name="mstatus"]:checked').value;
+  //     const age = document.getElementById('age').value;
 
 
-      // Combine first, middle, and last names into a full name
-      const fullName = `${firstName} ${middleName} ${lastName}`;
+  //     // Combine first, middle, and last names into a full name
+  //     const fullName = `${firstName} ${middleName} ${lastName}`;
 
-      // Get current date for Registration Date
-      const registrationDate = new Date().toISOString().split('T')[0];
+  //     // Get current date for Registration Date
+  //     const registrationDate = new Date().toISOString().split('T')[0];
 
-      // Create a new client object
-      const newClient = {
-        fullName,
-        phone,
-        passport,
-        nationality,
-        employeeType,
-        maritalStatus,
-        registrationDate,
-        age,
-        status: "Active", // Default status
-      };
+  //     // Create a new client object
+  //     const newClient = {
+  //       fullName,
+  //       phone,
+  //       passport,
+  //       nationality,
+  //       employeeType,
+  //       maritalStatus,
+  //       registrationDate,
+  //       age,
+  //       status: "Active", // Default status
+  //     };
 
-      // Retrieve existing clients from local storage
-      let clients = JSON.parse(localStorage.getItem("clients")) || [];
+  //     // Retrieve existing clients from local storage
+  //     let clients = JSON.parse(localStorage.getItem("clients")) || [];
 
-      // Add the new client to the list
-      clients.push(newClient);
+  //     // Add the new client to the list
+  //     clients.push(newClient);
 
-      // Save the updated clients list back to local storage
-      localStorage.setItem("clients", JSON.stringify(clients));
+  //     // Save the updated clients list back to local storage
+  //     localStorage.setItem("clients", JSON.stringify(clients));
 
-      // Reset the form fields
-      document.querySelector('form').reset();
+  //     // Reset the form fields
+  //     document.querySelector('form').reset();
 
-      // Redirect to client-list.html
-      window.location.href = "client-list.html";
-    }
+  //     // Redirect to client-list.html
+  //     window.location.href = "client-list.html";
+  //   }
 
-  }
+  // }
 
   else if (pageId === "client-listss") {
     // Ensure the client list is populated when on client-list.html

@@ -34,18 +34,17 @@
     <main>
 
 
-        <form action="/submit-registration" method="POST">
+        <form action="http://localhost/IP2-PROJECT/assets/backend/controllers/client_controller.php" method="POST">
             <div id="formcollection">
 
                 <div class="registerform">
                     <div class="inside-registerform">
                         <fieldset>
                             <legend>Basic Information</legend>
-
-                            <input type="text" id="fname" name="name" required placeholder="First Name"><br>
-                            <input type="text" id="mname" name="name" required placeholder="Middle Name"><br>
-                            <input type="text" id="lname" name="name" required placeholder="Last Name"><br>
-                            <input type="text" id="age" name="name" required placeholder="age"><br>
+                            <input type="text" id="fname" name="fname" required placeholder="First Name"><br>
+                            <input type="text" id="mname" name="mname" required placeholder="Middle Name"><br>
+                            <input type="text" id="lname" name="lname" required placeholder="Last Name"><br>                            
+                            <input type="text" id="age" name="age" required placeholder="Age"><br>
                             <input type="tel" id="contact" name="contact" required placeholder="Phone Number"><br>
                         </fieldset>
                     </div>
@@ -53,16 +52,13 @@
                     <div class="inside-registerform">
                         <fieldset>
                             <legend>Details Information</legend>
-
-                            <input type="text" id="passport" name="passport" placeholder="Passport Number" required><br>
-                            <input type="text" id="nationality" name="nationality" placeholder="Nationality"
-                                required><br>
-                            <input type="text" id="employee_type" name="employee_type" placeholder="Employee type"
-                                required><br>
+                            <input type="text" id="passport" name="passport_number" placeholder="Passport Number" required><br>
+                            <input type="text" id="nationality" name="nationality" placeholder="Nationality" required><br>
+                            <input type="text" id="employee_type" name="employee_type" placeholder="Employee type" required><br>
+                            
                             <fieldset>
-                                <input type="radio" id="mstatus" name="mstatus" value="Married" required> Married
-                                <input type="radio" id="mstatus" name="mstatus" value="Not-Married" required>
-                                Not-Married<br>
+                                <input type="radio" id="married" name="mstatus" value="Married" required> Married
+                                <input type="radio" id="not-married" name="mstatus" value="Not-Married" required> Not-Married<br>
                             </fieldset>
                         </fieldset>
                     </div>
