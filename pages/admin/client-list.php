@@ -1,5 +1,9 @@
-<?php require_once __DIR__ . '/../../assets/backend/models/TableData.php';
+<?php
+$searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+require_once __DIR__ . '/../../assets/backend/models/TableData.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,6 +48,24 @@
             color: #fff;
             border-color: #0056b3;
         }
+        #searchForm {
+            width: max-content;
+            display: flex;
+            align-items: center;
+            padding: 14px;
+            border-radius: 28px;
+            background-color:rgb(252, 252, 252);
+        }
+
+        #search-input {
+            font-size: 16px;
+            font-family: 'Lexend', sans-serif;
+            margin-left: 14px;
+            color: #333333;
+            outline: none;
+            border: none;
+            background: transparent;
+        }
     </style>
 </head>
 
@@ -65,18 +87,24 @@
             <h1>Registered Clients</h1>
             <!-- Added search bar -->
             <div class="Search-bar">
-                <form action="#" method="get">
-                    <input type="search" name="search" placeholder="Search">
-                    <i class="fas fa-search"></i>
-
+                <form id="searchForm" action="#" method="get">
+                    <i id="search-Icon" class="fas fa-search" style="cursor: pointer;"></i>
+                    <input id="search-input" type="search" name="search" placeholder="Search">
                 </form>
             </div>
+
+            <script>
+                document.getElementById('search-Icon').addEventListener('click', function() {
+                    document.getElementById('searchForm').submit();
+                });
+            </script>
+
         </div>
     </header>
 
     <main>
         <div class="table-container">
-            <table border="1">
+            <table border="1" >
                 <thead>
                     <tr>
                         <th>Full Name</th>
