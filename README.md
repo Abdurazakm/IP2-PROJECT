@@ -15,7 +15,8 @@ The **Automated Agency Client Information System** frontend focuses on building 
 
 🛠️ Tech Stack  
 - **HTML**: Markup for page structure.  
-- **CSS**: Styling for layouts, colors, and responsiveness.  
+- **CSS**: Styling for layouts, colors, and responsiveness.
+- **js**: for intractvity.
 
 ---
 
