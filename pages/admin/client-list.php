@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . '/../../assets/backend/models/TableData.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +13,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .page-link {
+            display: inline-block;
+            padding: 8px 14px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+            color: #333;
+            /* text-decoration: none; 007BFF*/
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .page-link:hover {
+            background-color: rgb(4, 155, 72);
+            color: #fff;
+            border-color: #007BFF;
+        }
+
+        .page-link.active {
+            background-color: rgb(4, 155, 72);
+            ;
+            color: #fff;
+            border-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body id="client-listss">
@@ -58,12 +92,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php include("C:\\xampp\htdocs\IP2-PROCJECT\assets\backend\\functions.php"); ?>
-                    <?php 
-                    if(empty($rows)){
+                    <?php
+                    if (empty($rows)) {
                         echo "<tr><td colspan='10'><p  style='text-align:center;'>Nothing to show here</p></td></tr>";
-                    }
-                    else{
+                    } else {
                         foreach ($rows as $row): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($row['full_name']); ?></td>
@@ -77,9 +109,33 @@
                                 <td><?php echo htmlspecialchars($row['flight_date']); ?></td>
                                 <td><?php echo htmlspecialchars($row['status']); ?></td>
                             </tr>
-                        <?php endforeach;} ?>
+                    <?php endforeach;
+                    } ?>
                 </tbody>
             </table>
+            <div class="pagination">
+                <?php if ($page > 1): ?>
+                    <a href="?page=<?php echo $page - 1; ?>" class="page-link">&laquo; Prev</a>
+                <?php endif; ?>
+
+                <?php if ($page > 8) {
+                    $i = $page - 4;
+                    $max = $page + 4;
+                } else {
+                    $i = 1;
+                    $max = 9;
+                }
+                for ($i; $i <= $total_pages && $i <= $max; $i++): ?>
+                    <a href="?page=<?php echo $i; ?>" class="page-link <?php echo ($i == $page) ? 'active' : ''; ?>">
+                        <?php echo $i; ?>
+                    </a>
+                <?php endfor; ?>
+
+                <?php if ($page < $total_pages): ?>
+                    <a href="?page=<?php echo $page + 1; ?>" class="page-link">Next &raquo;</a>
+                <?php endif; ?>
+            </div>
+
         </div>
     </main>
     <footer>
