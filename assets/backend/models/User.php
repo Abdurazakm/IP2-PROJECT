@@ -47,5 +47,16 @@ class User {
             password_hash($password, PASSWORD_DEFAULT)
         ]);
     }
+
+    public static function check_username($username){
+
+        $pdo = getPDO();
+
+        $check_usr = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+        $check_usr->execute([$username]);
+
+        return $check_usr->rowCount() === 0;
+
+    }
 }
 ?>
