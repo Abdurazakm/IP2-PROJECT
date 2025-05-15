@@ -30,7 +30,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // else if (pageId === "sign-up") {   // verification for sign-up page
+  else if (pageId === "sign-up") {   // verification for sign-up page
+
+    const usernameInput = document.getElementById('username');
+    const status_username = document.getElementById('username_status');
+
+    usernameInput.addEventListener('input', function (){
+      const username = usernameInput.value.trim();
+      if (!username) {
+        status_username.textContent = '';
+        return;
+      }
+    
+      fetch('../../assets/backend/controllers/check_username.php?username=' + encodeURIComponent(username))
+        .then(res => res.json())
+        .then(data => {
+          if (data.available) {
+            status_username.textContent = 'Username Available';
+            status_username.style.color = 'green';
+          } else {
+            status_username.textContent = 'Username is Taken';
+            status_username.style.color = 'red';
+          }
+        })
+        .catch(() => {
+          status_username.textContent = '⚠️ Error checking username';
+          status_username.style.color = 'orange';
+        });
+    });
+    
+
   //   const signupForm = document.getElementById("login-form");
 
   //   signupForm.addEventListener("submit", (e) => {
@@ -71,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //     window.location.href = "reports.html"; // Redirect to admin dashboard
 
   //   });
-  // }
+  }
 
   else if (pageId === "notification") {
     const timeElements = document.querySelectorAll(".timecalc");
