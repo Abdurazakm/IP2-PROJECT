@@ -1,5 +1,6 @@
 <?php
-function getPDO() {
+function getPDO()
+{
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -13,4 +14,3 @@ function getPDO() {
         die("Connection failed: " . $e->getMessage());
     }
 }
-?>

@@ -18,13 +18,16 @@
         <form action="http://localhost/IP2-PROJECT/assets/backend/controllers/user_controller.php" method="POST" id="login-form">
             <fieldset>
                 <legend>Sign Up</legend>
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name">
+                <input type="text" id="passport_no" name="passport_no" placeholder="Passport Number">
                 <input type="text" id="username" name="username" placeholder="Username" ><br>
+                <p id="username_status" style="font-size: 0.9rem;"></p>
                 <input type="email" id="email" name="email" placeholder="Email" required><br>
                 <input type="password" id="password" name="password" placeholder="New password" required><br>
                 <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm password" required><br>
                 <button type="submit" name="submit">Sign Up</button>
             </fieldset>
-            <p id="already_have">Already have an account? <a href="user_login.html">Log in</a></p>
+            <p id="already_have">Already have an account? <a href="user_login.php">Log in</a></p>
         </form>
     </main>
 </body>
