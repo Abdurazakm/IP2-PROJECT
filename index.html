@@ -156,29 +156,33 @@
         input.value = "";
 
         try {
-          const res = await fetch("assets/backend/controllers/chatbot.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: text }),
-          });
+          const res = await fetch(
+            `assets/backend/controllers/chatbot.php?query=${encodeURIComponent(
+              text
+            )}`
+          );
 
-          // Check if the response is OK (status 200)
-          if (!res.ok) {
-            const errorData = await res.json(); // Try to parse error message from server
-            throw new Error(
-              errorData.error || `HTTP error! Status: ${res.status}`
-            );
+          // Try to parse JSON, even on error
+          let data;
+          try {
+            data = await res.json();
+          } catch (e) {
+            data = {
+              reply: "Sorry, I couldn't get a clear response from the server.",
+            };
           }
 
-          const data = await res.json();
           document.querySelector(".typing")?.remove();
 
-          // Safely access data.reply, provide a fallback if it's undefined
-          const botReply = data.reply || "Sorry, I couldn't get a clear response.";
+          const botReply =
+            data.reply || "Sorry, I couldn't get a clear response.";
           chatbox.innerHTML += `<div class="bot-bubble">${botReply}</div>`;
         } catch (err) {
+          console.error("Error:", err);
           document.querySelector(".typing")?.remove();
-          chatbox.innerHTML += `<div class="bot-bubble">Error: ${err.message || 'Could not reach bot or process response.'}</div>`;
+          chatbox.innerHTML += `<div class="bot-bubble">Error: ${
+            err.message || "Could not reach bot or process response."
+          }</div>`;
         }
 
         chatbox.scrollTop = chatbox.scrollHeight;
