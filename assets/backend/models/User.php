@@ -62,6 +62,7 @@ class User {
         return $check_usr->rowCount() === 0;
 
     }
+    
 public static function getUserByUsername($username) {
     $pdo = getPDO();
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");

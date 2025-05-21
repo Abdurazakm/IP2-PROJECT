@@ -3,7 +3,7 @@ session_start();
 
 // Redirect to login page if user is not logged in or client data is not available
 if (!isset($_SESSION['username']) || !isset($_SESSION['client_data'])) {
-    header("Location: user_login.html");
+    header("Location: user_login.php");
     exit;
 }
 

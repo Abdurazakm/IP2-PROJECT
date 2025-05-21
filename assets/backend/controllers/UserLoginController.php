@@ -1,5 +1,13 @@
 <?php
+if (isset($_SESSION['username']) && $_SESSION['user_id']){
+    session_unset();
+    session_destroy();
+}
+
+
 session_start();
+session_regenerate_id(true);
+
 require_once '../config/database.php';
 require_once '../models/User.php';
 require_once '../models/Client.php';
@@ -8,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
+    //Check empty login input
     if (empty($username) || empty($password)) {
         echo "<script>alert('Username and password are required.'); window.history.back();</script>";
         exit;
@@ -15,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = User::getUserByUsername($username);
 
+    //Check if user and username exist
     if (!$user) {
         echo "<script>alert('User not found.'); window.history.back();</script>";
         exit;

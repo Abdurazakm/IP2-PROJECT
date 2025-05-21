@@ -3,7 +3,7 @@ session_start();
 
 // Ensure the user is logged in
 if (!isset($_SESSION['username'])) {
-    header("Location: user_login.html"); // Redirect to login page if not logged in
+    header("Location: user_login.php"); // Redirect to login page if not logged in
     exit;
 }
 
@@ -20,7 +20,7 @@ if ($user && isset($user['id'])) {
     $userId = $user['id'];
 } else {
     // Handle case where user ID cannot be found (e.g., user session is corrupted)
-    echo "<script>alert('User ID not found. Please log in again.'); window.location.href = 'user_login.html';</script>";
+    echo "<script>alert('User ID not found. Please log in again.'); window.location.href = 'user_login.php';</script>";
     exit;
 }
 

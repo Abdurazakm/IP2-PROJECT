@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (isset($_SESSION['username']) && $_SESSION['user_id']){
+  echo "<script>
+            window.location.href = '/IP2-PROJECT/pages/user/reports.php';
+        </script>";
+        exit;
+
+}
+else{
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,3 +52,4 @@
 </body>
 
 </html>
+<?php }?>
