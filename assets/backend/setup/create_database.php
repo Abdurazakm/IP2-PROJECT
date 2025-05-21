@@ -1,4 +1,4 @@
-<?php 
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -64,8 +64,6 @@ try {
     )";
     $conn->exec($createNotifications);
     echo "Table 'notifications' created.<br>";
-
 } catch (PDOException $e) {
     echo "Error creating database or tables: " . $e->getMessage();
 }
-?>

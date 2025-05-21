@@ -18,4 +18,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['notification_id'])) {
     echo "<script>alert('Invalid request.'); window.history.back();</script>";
     exit;
 }
-?>

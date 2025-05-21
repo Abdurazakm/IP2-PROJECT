@@ -41,7 +41,7 @@ $pendingClients = Client::getPendingStatusClients(); // Get clients with 'Pendin
             <div class="links">
                 <a href="../../index.html" style="--i:1">Home</a>
                 <a href="admin-dashboard.html" style="--i:1">Dashboard</a>
-                <a href="dashboard.php" style="--i:2">Reports</a> 
+                <a href="dashboard.php" style="--i:2">Reports</a>
             </div>
         </div>
     </nav>

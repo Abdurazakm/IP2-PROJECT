@@ -6,7 +6,7 @@ session_start();
 require_once '../../config/database.php'; // Adjust the path as per your project structure
 
 // Check if form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {    
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Prepare SQL query to fetch user
     $pdo = getPDO();
-   // $sql = "SELECT username, password FROM users WHERE username = :username";
+    // $sql = "SELECT username, password FROM users WHERE username = :username";
     $stmt = $pdo->prepare("SELECT username, password FROM users WHERE username = :username");
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->execute();
@@ -46,4 +46,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "Invalid request method.";
 }
-?>

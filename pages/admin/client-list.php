@@ -48,13 +48,14 @@ require_once __DIR__ . '/../../assets/backend/models/TableData.php';
             color: #fff;
             border-color: #0056b3;
         }
+
         #searchForm {
             width: max-content;
             display: flex;
             align-items: center;
             padding: 14px;
             border-radius: 28px;
-            background-color:rgb(252, 252, 252);
+            background-color: rgb(252, 252, 252);
         }
 
         #search-input {
@@ -104,7 +105,7 @@ require_once __DIR__ . '/../../assets/backend/models/TableData.php';
 
     <main>
         <div class="table-container">
-            <table border="1" >
+            <table border="1">
                 <thead>
                     <tr>
                         <th>Full Name</th>

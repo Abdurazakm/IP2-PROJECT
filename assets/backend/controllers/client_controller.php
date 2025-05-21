@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'flight_date' => null, // fetched later
             'status' => 'Registered' // default status
         ];
-        
+
 
         $success = Client::create($clientData);
 

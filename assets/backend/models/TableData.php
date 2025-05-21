@@ -34,7 +34,6 @@ if (!empty($searchTerm)) {
     $stmt->bindParam(':limit', $result_per_page, PDO::PARAM_INT);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 } else {
     // No search: normal pagination
     $countQuery = "SELECT COUNT(id) AS total FROM clients";
@@ -52,4 +51,3 @@ if (!empty($searchTerm)) {
 
 // Final total pages
 $total_pages = ceil($total_result / $result_per_page);
-

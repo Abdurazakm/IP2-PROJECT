@@ -1,12 +1,5 @@
 <?php
-if (isset($_SESSION['username']) && $_SESSION['user_id']){
-    session_unset();
-    session_destroy();
-}
-
-
 session_start();
-session_regenerate_id(true);
 
 require_once '../config/database.php';
 require_once '../models/User.php';
@@ -69,4 +62,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<script>alert('Invalid request method.'); window.history.back();</script>";
     exit;
 }
-?>

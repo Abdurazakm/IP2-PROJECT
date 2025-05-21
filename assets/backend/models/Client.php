@@ -77,7 +77,7 @@ class Client
     public static function getClientByPassport($passport_number)
     {
         $pdo = getPDO();
-        $stmt = $pdo->prepare("SELECT * FROM clients WHERE passport_number = ?"); 
+        $stmt = $pdo->prepare("SELECT * FROM clients WHERE passport_number = ?");
         $stmt->execute([$passport_number]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

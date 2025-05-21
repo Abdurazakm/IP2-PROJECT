@@ -13,15 +13,16 @@ class Notification
      * @param string|null $imageUrl Optional URL for an image associated with the notification.
      * @return bool True on success, false on failure.
      */
-public static function addNotification($userId, $title, $type, $message, $imageUrl, $createdAt = null) {
-    global $conn;
-    $sql = "INSERT INTO notifications (user_id, title, type, message, image_url, created_at) 
+    public static function addNotification($userId, $title, $type, $message, $imageUrl, $createdAt = null)
+    {
+        global $conn;
+        $sql = "INSERT INTO notifications (user_id, title, type, message, image_url, created_at) 
             VALUES (?, ?, ?, ?, ?, ?)";
-    $pdo = getPDO();
-    $stmt = $pdo->prepare($sql);
-    $createdAt = $createdAt ?: date('Y-m-d H:i:s'); // current time if not provided
-    return $stmt->execute([$userId, $title, $type, $message, $imageUrl, $createdAt]);
-}
+        $pdo = getPDO();
+        $stmt = $pdo->prepare($sql);
+        $createdAt = $createdAt ?: date('Y-m-d H:i:s'); // current time if not provided
+        return $stmt->execute([$userId, $title, $type, $message, $imageUrl, $createdAt]);
+    }
 
 
     /**
