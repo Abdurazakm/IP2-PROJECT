@@ -1,36 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pageId = document.body.id;
 
-  if (pageId === "log-in") {       // make the login process
+  // if (pageId === "log-in") {       // make the login process
 
-    const loginForm = document.getElementById("login-form");
+  //   const loginForm = document.getElementById("login-form");
 
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+  //   loginForm.addEventListener("submit", (e) => {
+  //     e.preventDefault();
 
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
+  //     const username = document.getElementById("username").value.trim();
+  //     const password = document.getElementById("password").value;
 
-      // Retrieve the users list from localStorage
-      const users = JSON.parse(localStorage.getItem("users")) || [];
+  //     // Retrieve the users list from localStorage
+  //     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      // Check if the provided credentials match any user in the list
-      const user = users.find(user => user.username === username && user.password === password);
+  //     // Check if the provided credentials match any user in the list
+  //     const user = users.find(user => user.username === username && user.password === password);
 
-      if (user) {
-        alert("Login successful!");
-        window.location.href = "reports.html"; // Redirect to admin dashboard
+  //     if (user) {
+  //       alert("Login successful!");
+  //       window.location.href = "reports.html"; // Redirect to admin dashboard
 
-        // Redirect to a dashboard or another page
-      } else {
-        alert("Invalid username or password.");
+  //       // Redirect to a dashboard or another page
+  //     } else {
+  //       alert("Invalid username or password.");
+  //     }
+
+  //     loginForm.reset();
+  //   });
+  // }
+
+if (pageId === "sign-up") {   // verification for sign-up page
+
+    const usernameInput = document.getElementById('username');
+    const status_username = document.getElementById('username_status');
+
+    usernameInput.addEventListener('input', function (){
+      const username = usernameInput.value.trim();
+      if (!username) {
+        status_username.textContent = '';
+        return;
       }
-
-      loginForm.reset();
+    
+      fetch('../../assets/backend/controllers/check_username.php?username=' + encodeURIComponent(username))
+        .then(res => res.json())
+        .then(data => {
+          if (data.available) {
+            status_username.textContent = 'Username Available';
+            status_username.style.color = 'green';
+          } else {
+            status_username.textContent = 'Username is Taken';
+            status_username.style.color = 'red';
+          }
+        })
+        .catch(() => {
+          status_username.textContent = '⚠️ Error checking username';
+          status_username.style.color = 'orange';
+        });
     });
-  }
+    
 
-  // else if (pageId === "sign-up") {   // verification for sign-up page
   //   const signupForm = document.getElementById("login-form");
 
   //   signupForm.addEventListener("submit", (e) => {
@@ -71,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //     window.location.href = "reports.html"; // Redirect to admin dashboard
 
   //   });
-  // }
+  }
 
   else if (pageId === "notification") {
     const timeElements = document.querySelectorAll(".timecalc");
