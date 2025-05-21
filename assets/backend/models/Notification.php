@@ -13,11 +13,10 @@ class Notification
      * @param string|null $imageUrl Optional URL for an image associated with the notification.
      * @return bool True on success, false on failure.
      */
-    public static function addNotification($userId, $title, $type, $message, $imageUrl, $createdAt = null)
-    {
+    public static function addNotification($userId, $title, $type, $message, $imageUrl, $createdAt = null) {
         global $conn;
-        $sql = "INSERT INTO notifications (user_id, title, type, message, image_url, created_at) 
-            VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO notifications (user_id, title, type, message, image_url, created_at)
+                VALUES (?, ?, ?, ?, ?, ?)";
         $pdo = getPDO();
         $stmt = $pdo->prepare($sql);
         $createdAt = $createdAt ?: date('Y-m-d H:i:s'); // current time if not provided
@@ -55,5 +54,20 @@ class Notification
         $pdo = getPDO();
         $stmt = $pdo->prepare("UPDATE notifications SET read_status = TRUE WHERE id = ?");
         return $stmt->execute([$notificationId]);
+    }
+
+    /**
+     * Counts the number of unread notifications for a specific user.
+     *
+     * @param int $userId The ID of the user.
+     * @return int The number of unread notifications.
+     */
+    public static function countUnreadNotifications($userId)
+    {
+        $pdo = getPDO();
+        $sql = "SELECT COUNT(*) FROM notifications WHERE user_id = ? AND read_status = FALSE";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchColumn();
     }
 }

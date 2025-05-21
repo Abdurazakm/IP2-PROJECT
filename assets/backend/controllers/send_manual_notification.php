@@ -27,5 +27,7 @@ $image = "../../assets/images/manual_message.jpg"; // Use a default or dynamic i
 Notification::addNotification($userId, $title, $title, $message, $image, $datetime);
 
 // ✅ Redirect without newline
-header("Location: http://localhost/IP2-PROJECT/assets/pages/admin/admin-dashboard.html?success=true");
+            echo "<script>
+                window.location.href = '/IP2-PROJECT/pages/admin/client-request.html';
+            </script>";
 exit;
