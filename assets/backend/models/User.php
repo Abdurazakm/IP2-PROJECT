@@ -10,6 +10,7 @@ class User {
 
         if ($checkStmt->fetch()) {
             // Email exists
+            echo "email exists";
             return false;
         }
 
@@ -18,6 +19,7 @@ class User {
 
         if ($checkpassp->fetch()){
             // Account with this Passport Number already exists
+            echo "Account with this Passport Number already exists";
             return false;
         }
 
@@ -27,11 +29,13 @@ class User {
 
         if($row){
             if ($row['full_name'] != $FullName){
+                echo "Full name does not match with the one registered by admin";
                 return false;
             }
         }
         else {
             // If not registerd by admin cannot sign up
+            echo "You are not registered by admin";
             return false;
         }
 
@@ -58,5 +62,19 @@ class User {
         return $check_usr->rowCount() === 0;
 
     }
+public static function getUserByUsername($username) {
+    $pdo = getPDO();
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+public static function getUserByPassport($passportId) {
+    $pdo = getPDO();
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE passport_no = ?");
+    $stmt->execute([$passportId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+
 }
 ?>
