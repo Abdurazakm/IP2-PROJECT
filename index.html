@@ -113,10 +113,9 @@
           <p>Phone: +25193223****</p>
         </div>
       </section>
-      <p class="copyright">&copy; 2024 All Rights Reserved.</p>
+      <p class="copyright">© 2024 All Rights Reserved.</p>
     </footer>
 
-    <!-- Chatbot Button -->
     <div class="chat-wrapper">
       <div id="chat-toggle" onclick="toggleChat()">
         💬
@@ -124,7 +123,6 @@
       </div>
     </div>
 
-    <!-- Chatbot Container -->
     <div id="chat-container">
       <div id="chat-header">
         Agency Assistant
@@ -140,7 +138,6 @@
       <button onclick="sendMessage()">Send</button>
     </div>
 
-    <!-- Chatbot Script -->
     <script>
       function toggleChat() {
         const chat = document.getElementById("chat-container");
@@ -165,12 +162,23 @@
             body: JSON.stringify({ message: text }),
           });
 
+          // Check if the response is OK (status 200)
+          if (!res.ok) {
+            const errorData = await res.json(); // Try to parse error message from server
+            throw new Error(
+              errorData.error || `HTTP error! Status: ${res.status}`
+            );
+          }
+
           const data = await res.json();
           document.querySelector(".typing")?.remove();
-          chatbox.innerHTML += `<div class="bot-bubble">${data.reply}</div>`;
+
+          // Safely access data.reply, provide a fallback if it's undefined
+          const botReply = data.reply || "Sorry, I couldn't get a clear response.";
+          chatbox.innerHTML += `<div class="bot-bubble">${botReply}</div>`;
         } catch (err) {
           document.querySelector(".typing")?.remove();
-          chatbox.innerHTML += `<div class="bot-bubble">Error: Could not reach bot.</div>`;
+          chatbox.innerHTML += `<div class="bot-bubble">Error: ${err.message || 'Could not reach bot or process response.'}</div>`;
         }
 
         chatbox.scrollTop = chatbox.scrollHeight;

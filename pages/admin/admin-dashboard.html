@@ -23,9 +23,9 @@
         <a href="../../index.html" style="--i:1">Home</a>
 
         <a href="register.html" style="--i:2">Client Register</a>
-        <a href="client-list.html" style="--i:3">Client List</a>
+        <a href="client-list.php" style="--i:3">Client List</a>
         <a href="client-request.html" style="--i:4">Manual Messaging</a>
-        <a href="dashboard.html" style="--i:5">Reports</a>
+        <a href="dashboard.php" style="--i:5">Reports</a>
 
       </div>
     </div>
@@ -53,13 +53,19 @@
 
       <!-- Section 4: Dashboard -->
       <div class="section-admin" id="dashboard">
-        <a href="dashboard.html">Reports</a>
+        <a href="dashboard.php">Reports</a>
       </div>
     </div>
   </main>
   <footer>
     <p class="copyright">&copy; 2024 All Rights Reserved.</p>
   </footer>
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            alert("✅ Notification sent successfully!");
+        }
+    </script>
 </body>
 
 </html>
