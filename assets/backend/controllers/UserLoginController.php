@@ -50,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // ✅ Redirect
         echo "<script>
-            alert('Login successful!');
             window.location.href = '/IP2-PROJECT/pages/user/reports.php';
         </script>";
         exit;

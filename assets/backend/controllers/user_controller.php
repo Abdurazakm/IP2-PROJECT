@@ -29,18 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             echo "<script>
-                alert('User registered successfully.');
                 window.location.href = '/IP2-PROJECT/pages/user/user_login.php';
             </script>";
-        } else {
-            echo "<script>
-                alert('Something went wrong while saving the user.');
-                
-            </script>";
+        
         }
     } else {
         foreach ($errors as $error) {
-            echo $error . "<br>";
+            echo "<script>alert('$error');
+            window.location.href = '/IP2-PROJECT/pages/user/signup.html';</script>";
         }
     }
 }

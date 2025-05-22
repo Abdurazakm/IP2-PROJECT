@@ -12,7 +12,10 @@ class User
 
         if ($checkStmt->fetch()) {
             // Email exists
-            echo "email exists";
+            echo "<script>
+                alert('Email already exists');
+                window.location.href = '/IP2-PROJECT/pages/user/signup.html';
+            </script>";
             return false;
         }
 
@@ -21,7 +24,10 @@ class User
 
         if ($checkpassp->fetch()) {
             // Account with this Passport Number already exists
-            echo "Account with this Passport Number already exists";
+           echo "<script>
+                alert('Account with this Passport Number already exists');
+                window.location.href = '/IP2-PROJECT/pages/user/signup.html';
+            </script>";
             return false;
         }
 
@@ -36,7 +42,10 @@ class User
             }
         } else {
             // If not registerd by admin cannot sign up
-            echo "You are not registered by admin";
+            echo "<script>
+                alert('You are not registered by admin');
+                window.location.href = '/IP2-PROJECT/pages/user/signup.html';
+            </script>";
             return false;
         }
 

@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($success) {
             echo "<script>
-                alert('Client registered successfully.');
                 window.location.href = '/IP2-PROJECT/pages/admin/register.html';
             </script>";
         } else {
