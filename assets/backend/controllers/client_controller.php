@@ -22,14 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'flight_date' => null, // fetched later
             'status' => 'Registered' // default status
         ];
-        
+
 
         $success = Client::create($clientData);
 
         if ($success) {
-            echo "Client registered successfully.";
+            echo "<script>
+                window.location.href = '/IP2-PROJECT/pages/admin/register.html';
+            </script>";
         } else {
-            echo "Something went wrong while saving the client.";
+            echo "<script>
+                alert('Something went wrong while saving the client.');
+                window.location.href = '/IP2-PROJECT/pages/admin/register.html';
+            </script>";
         }
     } else {
         foreach ($errors as $e) echo $e . "<br>";

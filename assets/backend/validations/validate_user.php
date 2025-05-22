@@ -1,5 +1,6 @@
 <?php
-function validateUser($data) {
+function validateUser($data)
+{
     $errors = [];
 
     if (empty($data['fullname'])) $errors[] = "Full Name Can not be empty";
