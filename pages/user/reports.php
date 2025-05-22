@@ -3,7 +3,7 @@ session_start();
 
 // Redirect to login page if user is not logged in or client data is not available
 if (!isset($_SESSION['username']) || !isset($_SESSION['client_data'])) {
-    header("Location: user_login.html");
+    header("Location: user_login.php");
     exit;
 }
 
@@ -31,7 +31,7 @@ if ($user && isset($user['id'])) {
 } else {
     // This case should ideally not happen if user is logged in and client data exists,
     // but it's good practice for robustness.
-    echo "<script>alert('User ID not found for notifications. Please log in again.'); window.location.href = 'user_login.html';</script>";
+    echo "<script>alert('User ID not found for notifications. Please log in again.'); window.location.href = 'user_login.php';</script>";
     exit;
 }
 
