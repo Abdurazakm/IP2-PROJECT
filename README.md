@@ -1,4 +1,4 @@
-Automated Agency Client Information System (Frontend)  
+Automated Agency Client Information System 
 
 📋 Project Overview  
 The **Automated Agency Client Information System** frontend focuses on building the user interface for efficient communication between agencies and their clients. This phase of development is implemented using **HTML** and **CSS**, providing a foundation for user-friendly interactions and responsive designs.  
@@ -77,4 +77,4 @@ We welcome contributions!
 
 📞 Contact  
 For questions or support, reach out to abdurazakm343@gmail.com.  
-
+For questions or support, reach out to accoabdulazizmohammed@gmail.com.
