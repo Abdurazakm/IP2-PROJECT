@@ -1,10 +1,11 @@
 <?php
-function validateClient($data) {
+function validateClient($data)
+{
     $errors = [];
     if (empty($data['fname']) || empty($data['mname']) || empty($data['lname'])) {
         $errors[] = "First, Middle, and Last names are required.";
     }
-    
+
     if (!isset($data['age']) || !is_numeric($data['age'])) {
         $errors[] = "Valid age is required.";
     }
